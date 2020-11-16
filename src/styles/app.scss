@@ -1,0 +1,19 @@
+@import "normalize-scss";
+@include normalize();
+@import "quasar.variables";
+
+html, body {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    background: $background;
+}
+
+h1 {
+    font-size: 26pt;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 20pt;
+    font-weight: bold;
+}
