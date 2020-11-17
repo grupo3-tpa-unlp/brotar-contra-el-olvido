@@ -25,6 +25,7 @@
     article {
         margin: 20px;
         background: white;
+        max-width: 95%;
         box-shadow:
             -3px -3px 3px lightgrey,
             3px -3px 3px lightgrey,
@@ -35,5 +36,9 @@
 
     figure {
         cursor: pointer;
+    }
+
+    img {
+        max-width: 100%;
     }
 </style>

@@ -65,6 +65,8 @@
 
 <style lang="scss">
     $height: 80px;
+    $small-title: 550px;
+    $break-title: 394px;
 
     .q-toolbar__title {
         text-align: center;
@@ -75,6 +77,16 @@
             color: azure;
             line-height: $height;
             margin: 0;
+
+            @media (max-width: $small-title) {
+                font-size: 24px;
+            }
+            @media (max-width: $break-title) {
+                white-space: normal;
+                overflow: visible;
+                margin-top: 10px;
+                line-height: 30px;
+            }
         }
     }
 
