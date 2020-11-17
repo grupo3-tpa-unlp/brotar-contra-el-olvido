@@ -2,22 +2,38 @@
 
 Trabajo Integrador Final para la materia Teoría de la Práctica Artística - Año 2020
 
-## Project setup
+## Montar ambiente de desarrollo utilizando docker
+Ejecutar desde el directorio `docker/dev`:
+
+Si es la primera vez:
+```sh
+$ cp .env.dist .env
+$ docker-compose build
+$ docker run -it --rm -v"`pwd`/../..":/code brotar/app yarn install
 ```
-yarn install
+suponiendo que no se modificó el nombre del proyecto en el archivo `docker/dev/.env`
+
+Para montar el proyecto:
+```sh
+$ docker-compose up -d
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
+Para desmontar el proyecto:
+```sh
+$ docker-compose down -v
 ```
 
-### Lints and fixes files
-```
-yarn lint
+## Montar ambiente de producción
+
+Instalar dependencias:
+ - node
+ - yarn
+ - vue/cli
+ - quasar
+ 
+
+Ejecutar desde la raíz del proyecto:
+```sh
+$ yarn build
+$ node server.js
 ```
