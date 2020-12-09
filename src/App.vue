@@ -54,7 +54,7 @@
         data () {
             return {
                 page: 'inicio',
-                menu: true,
+                menu: false,
                 menuList: [
                     { id: 'inicio', label: 'Inicio' },
                     { id: 'proyecto', label: 'Proyecto' },
