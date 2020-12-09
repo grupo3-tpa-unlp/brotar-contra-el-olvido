@@ -2,18 +2,81 @@
 @include normalize();
 @import "quasar.variables";
 
-html, body {
+body {
     font-family: "Courier New", Courier, monospace;
-    font-weight: bold;
+    color: $font;
     background: $background;
+}
+
+.q-header {
+    background: transparent;
+
+}
+
+.menu-button-container {
+    margin: 9px 12px;
+}
+
+.menu-button {
+    color: lightgray;
+}
+
+.q-page-container {
+    margin: 0 20px;
+    text-align: center;
+}
+
+.q-drawer {
+    font-weight: bold;
+
+    .q-item__section:hover {
+        background: white;
+    }
+}
+
+h1, h2 {
+    font-weight: bold;
+    margin: 0;
 }
 
 h1 {
     font-size: 26pt;
-    font-weight: bold;
 }
 
 h2 {
     font-size: 20pt;
-    font-weight: bold;
+}
+
+a, a:hover, a:hover:active, a:active {
+    color: $font;
+}
+
+blockquote {
+    display: inline-block;
+    background: lighten($primary, 36%);
+    border-left: $primary 10px solid;
+    color: darken($primary, 20%);
+    padding: 25px 50px;
+    margin: 50px;
+    margin-bottom: 70px;
+
+    :not(.author) {
+        font-style: italic;
+        font-size: 16pt;
+    }
+
+    .author {
+        float: right;
+        margin-top: 10px;
+    }
+}
+
+blockquote:before {
+    content: open-quote;
+    color: $primary;
+    font-size: 4em;
+    margin-right: 0.25em;
+    line-height: 1.1em;
+    font-family: serif;
+    float: left;
 }

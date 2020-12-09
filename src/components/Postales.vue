@@ -1,6 +1,6 @@
 <template>
     <section>
-        <h2>Postales</h2>
+        <h1>Postales</h1>
         <section class="postales">
             <template v-for="alumno in alumnos">
                 <Postal :key="alumno.id" :alumno="alumno" />

@@ -1,16 +1,16 @@
 <template>
-    <q-layout view="hHh LpR lff">
-        <q-header elevated class="bg-primary text-white">
+<!--    <q-layout view="lHh lpR lFf">-->
+    <q-layout view="lHh lpR lff" :style="page === 'inicio' ? backgroundImage : ''">
+        <q-header>
             <q-toolbar>
-                <q-btn dense flat round icon="menu" @click="menu = !menu" />
-
-                <q-toolbar-title>
-                    <h1>Brotar Contra el Olvido</h1>
-                </q-toolbar-title>
+                <q-btn class="menu-button" dense flat round icon="menu" @click="menu = !menu" />
             </q-toolbar>
         </q-header>
-        <q-drawer v-model="menu" :width="220" :breakpoint="500" side="left" elevated content-class="bg-grey-3">
+        <q-drawer v-model="menu" :width="220" :breakpoint="500" side="left" overlay bordered>
             <q-scroll-area class="fit">
+                <div class="menu-button-container">
+                    <q-btn class="menu-button" dense flat round icon="menu" @click="menu = !menu" />
+                </div>
                 <q-list>
                     <template v-for="(menuItem, index) in menuList">
                         <q-item :key="index" clickable :active="menuItem.id === page" v-ripple @click="page = menuItem.id">
@@ -26,6 +26,7 @@
         <q-page-container>
             <div>
                 <Inicio v-if="page === 'inicio'" />
+                <img v-if="page !== 'inicio'" :src="hoja" alt="Brotar Contra el Olvido" style="max-width: 200px;" />
                 <Proyecto v-if="page === 'proyecto'" />
                 <Postales v-if="page === 'postales'" />
                 <Creditos v-if="page === 'creditos'" />
@@ -39,6 +40,8 @@
     import Proyecto from "./components/Proyecto";
     import Postales from "./components/Postales";
     import Creditos from "./components/Creditos";
+    import backgroundUrl from "./assets/fondo.jpg";
+    import hoja from "./assets/hoja.png";
 
     export default {
         name: 'LayoutDefault',
@@ -51,48 +54,16 @@
         data () {
             return {
                 page: 'inicio',
-                menu: false,
+                menu: true,
                 menuList: [
-                    { id: 'inicio', label: 'Inicio', separator: true },
-                    { id: 'proyecto', label: 'Proyecto', separator: true },
-                    { id: 'postales', label: 'Postales', separator: true },
-                    { id: 'creditos', label: 'Créditos', separator: true },
-                ]
+                    { id: 'inicio', label: 'Inicio' },
+                    { id: 'proyecto', label: 'Proyecto' },
+                    { id: 'postales', label: 'Postales' },
+                    { id: 'creditos', label: 'Créditos' },
+                ],
+                backgroundImage: `background-image: url(${backgroundUrl}); background-position: center; background-repeat: no-repeat; background-size: contain;`,
+                hoja,
             }
         },
     }
 </script>
-
-<style lang="scss">
-    $height: 80px;
-    $small-title: 550px;
-    $break-title: 394px;
-
-    .q-toolbar__title {
-        text-align: center;
-        height: $height;
-        line-height: $height;
-
-        h1 {
-            color: azure;
-            line-height: $height;
-            margin: 0;
-
-            @media (max-width: $small-title) {
-                font-size: 24px;
-            }
-            @media (max-width: $break-title) {
-                white-space: normal;
-                overflow: visible;
-                margin-top: 10px;
-                line-height: 30px;
-            }
-        }
-    }
-
-    .q-page-container {
-        div {
-            margin: 20px;
-        }
-    }
-</style>
