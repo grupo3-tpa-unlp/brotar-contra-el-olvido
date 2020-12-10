@@ -1,31 +1,49 @@
 <template>
     <article>
         <figure>
-            <img src="http://via.placeholder.com/300x200" alt="">
-            <figcaption>
-                <p>
-                    <span>{{ alumno.apellido }}</span>, <span>{{ alumno.nombre }}</span>
-                </p>
-                <p v-if="alumno.dni || alumno.legajo">
-                    <span v-if="alumno.dni">DNI: {{ alumno.dni }}</span> <span v-if="alumno.legajo">Legajo: {{ alumno.legajo }}</span>
-                </p>
+            <img :src="getImg(postal.img)" :alt="!!postal.caption ? postal.caption : 'Postal'" @click="dialog = true" />
+            <figcaption v-if="!!postal.caption">
+                {{ postal.caption }}
             </figcaption>
         </figure>
+        <q-dialog v-model="dialog" persistent maximized transition-show="slide-up" transition-hide="slide-down">
+            <q-card>
+                <q-bar>
+                    <q-space />
+                    <q-btn dense flat icon="close" v-close-popup>
+                        <q-tooltip>Cerrar</q-tooltip>
+                    </q-btn>
+                </q-bar>
+                <q-card-section>
+                    <img :src="getImg(postal.img)" :alt="!!postal.caption ? postal.caption : 'Postal'" />
+                </q-card-section>
+            </q-card>
+        </q-dialog>
     </article>
 </template>
 
 <script>
     export default {
         name: "Postal",
-        props: ['alumno'],
+        props: ['postal'],
+        data () {
+            return {
+                dialog: false,
+            }
+        },
+        methods: {
+            getImg (img) {
+                return require('../assets/postales/'+img)
+            },
+        },
     }
 </script>
 
 <style scoped>
     article {
-        margin: 20px;
+        margin: 50px;
         background: white;
-        max-width: 95%;
+        width: 80%;
         box-shadow:
             -3px -3px 3px lightgrey,
             3px -3px 3px lightgrey,
@@ -36,9 +54,17 @@
 
     figure {
         cursor: pointer;
+        display: inline;
+        margin: 0;
+    }
+
+    figcaption {
+        font-weight: bold;
+        margin: 10px;
     }
 
     img {
-        max-width: 100%;
+        width: 100%;
+        display: block;
     }
 </style>

@@ -2,15 +2,15 @@
     <section>
         <h1>Postales</h1>
         <section class="postales">
-            <template v-for="alumno in alumnos">
-                <Postal :key="alumno.id" :alumno="alumno" />
+            <template v-for="postal in postales">
+                <Postal :key="postal.id" :postal="postal" />
             </template>
         </section>
     </section>
 </template>
 
 <script>
-    import alumnos from "../data/alumnos";
+    import postales from "../data/postales";
     import Postal from "./Postal";
 
     export default {
@@ -20,16 +20,8 @@
         },
         data () {
             return {
-                alumnos
+                postales
             };
         }
     }
 </script>
-
-<style scoped>
-    .postales {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-    }
-</style>

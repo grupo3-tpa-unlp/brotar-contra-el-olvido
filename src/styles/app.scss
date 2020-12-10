@@ -80,3 +80,13 @@ blockquote:before {
     font-family: serif;
     float: left;
 }
+
+.postales {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    article {
+        max-width: 710px;
+    }
+}
